@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Animated Login Form | CodingNepal</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <div class="center">
+      <h1>Login</h1>
+      <form onsubmit="login(event)">
+        <div class="txt_field">
+          <input type="text" name="email" required>
+          <span></span>
+          <label>Username</label>
+        </div>
+        <div class="txt_field">
+          <input type="password" name="password" required>
+          <span></span>
+          <label>Password</label>
+        </div>
+        <div class="pass">Forgot Password?</div>
+        <input type="submit" value="Login">
+        <div class="signup_link">
+          Not a member? <a href="https://saqlanekhan.github.io/Myapp">Signup</a>
+        </div>
+      </form>
+    </div>
+    <script>
+   function login(e){
+     e.preventDefault();
+     const form=new FormData(e.target);
+
+     const locStore=(localStorage.getItem('user-details')!=null)? JSON.parse(localStorage.getItem('user-details')) : [];
+   if(locStore.length>0){
+     let checkEmail=locStore.find(em=>em.email==(form.get('email')));
+     console.log(locStore);
+     console.log(form.get('email'))
+     if(checkEmail!=undefined){
+          let checkPassword=locStore.find(p=>p.password==form.get('password'));
+          if(checkPassword!=undefined){
+            window.location.href="./todo.html"
+          }else{
+            alert('!Incorrect password!')
+          }
+     }else{
+       alert('You have not registered ..Please Sign-Up')
+     }
+   }
+   }
+    </script>
+
+  </body>
+</html>
