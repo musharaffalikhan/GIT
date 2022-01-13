@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANIMATED LOGIN FORM</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="center">
+        <h1>Sign-Up</h1>
+        <form onsubmit="signup(event)">
+                <div class="input-container ic1">
+                  <input id="email" class="input" name="eamil" type="text" placeholder=" " required />
+                  <div class="cut"></div>
+                  <label for="Email" class="placeholder">Email</label>
+                </div>
+                <div class="input-container ic2">
+                    <input id="fullname" class="input" name="name" type="text" placeholder=" " required />
+                    <div class="cut"></div>
+                    <label for="fullname" class="placeholder">Full name</label>
+                  </div>
+                  <div class="input-container ic2">
+                    <input id="phone" class="input" name="phone" type="text" placeholder=" " required />
+                    <div class="cut"></div>
+                    <label for="phone" class="placeholder">Phone</label>
+                  </div>
+                <div class="input-container ic2">
+                  <input id="Password" class="input" name="password" type="password" placeholder=" " required />
+                  <div class="cut"></div>
+                  <label for="Password" class="placeholder">Password</label>
+                </div>
+                <button type="text" class="submit">Sign-Up</button>
+                <div class="signup_link"> Existing member? <a href="login.html">Login</a>
+                </div>
+        </form>        
+    </div>
+    <script>
+         function signup(e){
+      e.preventDefault();
+      const checklocalstorage = localStorage.getItem('user-details');
+      
+        
+        const form=new FormData(e.target);
+        let signUpDetails={
+            email:form.get('email'),
+            name:form.get('name'),
+            phone:form.get('phone'),
+            password:form.get('password')
+            }  
+           
+if(checklocalstorage==null){
+
+  localStorage.setItem('user-details',JSON.stringify([signUpDetails]));
+  alert('successfully registered!! Now you can login')
+}else{
+  objArra=JSON.parse(checklocalstorage)
+  let checkExists=objArra.find(n=>n.email==signUpDetails.email);
+  if(checkExists!=undefined){
+alert('user already exists!!')
+  }else{
+    objArra.push(signUpDetails);
+  localStorage.setItem('user-details',JSON.stringify(objArra));
+    alert('successfully registered!! Now you can login')
+  }
+
+}
+
+
+                
+    }
+    </script>
+</body>
+</html>

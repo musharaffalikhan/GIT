@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>ANIMATED LOGIN FORM</title>
+</head>
+<body>
+    <div class="center">
+        <h1>Login</h1>
+        <form onsubmit="login(event)">
+                <div class="input-container ic1">
+                  <input id="firstname" class="input" type="text" placeholder=" " required />
+                  <div class="cut"></div>
+                  <label for="Email" class="placeholder">Email</label>
+                </div>
+                <div class="input-container ic2">
+                  <input id="Password" class="input" type="password" placeholder=" " required />
+                  <div class="cut"></div>
+                  <label for="Password" class="placeholder">Password</label>
+                </div>
+                <div class="pass">Forgot Password?</div>
+                <button type="text" class="submit">Login</button>
+                <div class="signup_link"> Not a member? <a href="index.html">Signup</a>
+                </div>
+        </form>        
+    </div>
+    <script>
+         function login(e){
+     e.preventDefault();
+     const form=new FormData(e.target);
+
+     const locStore=(localStorage.getItem('user-details')!=null)? JSON.parse(localStorage.getItem('user-details')) : [];
+   if(locStore.length>0){
+     let checkEmail=locStore.find(em=>em.email==(form.get('email')));
+     console.log(locStore);
+     console.log(form.get('email'))
+     if(checkEmail!=undefined){
+          let checkPassword=locStore.find(p=>p.password==form.get('password'));
+          if(checkPassword!=undefined){
+            window.location.href="./todo.html"
+          }else{
+            alert('!Incorrect password!')
+          }
+     }else{
+       alert('You have not registered ..Please Sign-Up')
+     }
+   }
+   }
+
+    </script>
+</body>
+</html>
