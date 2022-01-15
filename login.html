@@ -17,9 +17,9 @@
                   <label for="Email" class="placeholder">Email</label>
                 </div>
                 <div class="input-container ic2">
-                  <input id="Password" class="input" name="passsword" type="password" placeholder=" " required />
+                  <input id="password" class="input" name="passsword" type="password" placeholder=" " required />
                   <div class="cut"></div>
-                  <label for="Password" class="placeholder">Password</label>
+                  <label for="password" class="placeholder">Password</label>
                 </div>
                 <div class="pass">Forgot Password?</div>
                 <button type="text" class="submit">Login</button>
@@ -40,7 +40,7 @@
      if(checkEmail!=undefined){
           let checkPassword=locStore.find(p=>p.password==form.get('password'));
           if(checkPassword!=undefined){
-            window.location.href=""
+            window.location.href="./todo.html"
           }else{
             alert('!Incorrect password!')
           }
