@@ -5,7 +5,7 @@ body {
     justify-content: center;
     height:100vh;
     background-image: url(https://colorlib.com/etc/lf/Login_v3/images/bg-01.jpg);
-
+background-image: inherit;
   }
   
   .center{
