@@ -30,7 +30,7 @@ form.addEventListener("submit", function (event) {
   }
 
   clear.addEventListener("click", function () {
-   
+    toDoList.innerHTML = "";
   });
 });
 
